@@ -1,0 +1,56 @@
+<% layout('../view/layouts/boilerplate') -%>
+
+    <body>
+
+        <div class="row">
+            <div class="col-6 offset-1">
+                <% if (error && error.length) { %>
+                    <div class="alert alert-danger">
+                        <%= error %>
+                    </div>
+                <% } %>
+    
+                <% if (success && success.length) { %>
+                    <div class="alert alert-success">
+                        <%= success %>
+                    </div>
+                <% } %>
+                <h1>sign Up</h1>
+                <form action="/signup" method="post" novalidate class="needs-validation">
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">Username is required</div>
+                    </div>
+    
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">Email is required</div>
+                    </div>
+    
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">Password is required</div>
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-success mt-3 mb-3">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </body>

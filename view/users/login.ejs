@@ -1,0 +1,59 @@
+<% layout('../view/layouts/boilerplate') -%>
+
+<body>
+    <div class="row">
+        <div class="col-6 offset-1">
+            <% if (error && error.length) { %>
+                <div class="alert alert-danger">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <% if (success && success.length) { %>
+                <div class="alert alert-success">
+                    <%= success %>
+                </div>
+            <% } %>
+
+            <h1>Login</h1>
+            <form action="/login" method="post" novalidate class="needs-validation">
+                <!-- Username Field -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                 
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success mt-3 mb-3">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+</body>

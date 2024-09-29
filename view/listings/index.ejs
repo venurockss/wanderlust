@@ -1,0 +1,248 @@
+<!-- 
+
+
+ 
+ <% layout('../view/layouts/boilerplate') -%>
+
+ <body>
+     <h3>All Listings</h3>
+ 
+     <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+         <% for(let listing of allListings) { %>
+             <a href="/listings/<%= listing._id %>" class="listing-link">
+                 <div class="card col">
+                    
+                     <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;" alt="<%= listing.title %>">
+                     <div class="card-img-overlay"></div>
+                     <div class="card-body">
+                         <b class="card-title"><%= listing.title %></b>
+                         
+                         <p class="card-text">
+                             <strong>Price:</strong> 
+                             &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                             <strong>/night</strong>
+                         </p>
+                        
+                         <p class="card-text">
+                             <strong>Location:</strong> 
+                             <%= listing.location ? listing.location : "Location not available" %>, 
+                             <%= listing.country ? listing.country : "" %>
+                         </p>
+                     </div>
+                 </div>
+             </a>
+         <% } %>
+     </div>
+ </body>
+  
+-->
+
+<% layout('../view/layouts/boilerplate') -%>
+
+    <body>
+        <% if (error && error.length) { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+            <% } %>
+
+                <% if (success && success.length) { %>
+                    <div class="alert alert-success">
+                        <%= success %>
+                    </div>
+                    <% } %>
+                        <!-- <style>
+                            body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+  } 
+    
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+    color: #888;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: #000;
+}
+
+.nav-item i {
+    font-size: 24px;
+}
+
+.nav-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.filter-controls {
+    display: flex;
+    align-items: center;
+}
+
+.filter-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    padding: 8px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.filter-button i {
+    font-size: 18px;
+    color: #555;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch p {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+                        </style>
+                        <h3>All Listings</h3>   
+                        <div class="navbar">
+                            <div class="nav-items">
+                                <div class="nav-item active">
+                                    <i class="fas fa-star"></i>
+                                    <p>Icons</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-tractor"></i>
+                                    <p>Farms</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-bed"></i>
+                                    <p>Rooms</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <p>Amazing pools</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-home"></i>
+                                    <p>Earth homes</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-box"></i>
+                                    <p>Containers</p>
+                                </div>
+                                <div class="nav-item">
+                                    <i class="fas fa-mountain"></i>
+                                    <p>Amazing views</p>
+                                </div>
+                            </div>
+                            <div class="filter-controls">
+                                <button class="filter-button">
+                                    <i class="fas fa-sliders-h"></i>
+                                    Filters
+                                </button>
+                                <div class="toggle-switch">
+                                    <p>Display total before taxes</p>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-4">
+                            <% for(let listing of allListings) { %>
+                                <a href="/listing/<%= listing._id %>" class="listing-link">
+                                    <div class="card col listing-card">
+                                        <!-- Ensure image URL is provided, with a fallback -->
+                                        <img href="/listing/<%= listing._id %>"
+                                            src="<%= listing.image ? listing.image.url : '/path/to/default/image.jpg' %>"
+                                            class="card-img-top" style="height: 20rem;" alt="<%= listing.title %>">
+                                        <div class="card-img-overlay"></div>
+                                        <div class="card-body">
+                                            <b class="card-title">
+                                                <%= listing.title %>
+                                            </b>
+                                            <!-- Price Display -->
+                                            <p class="card-text">
+                                                <strong>Price:</strong>
+                                                &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A"
+                                                    %>
+                                                    <strong>/night</strong>
+                                            </p>
+                                            <!-- Location Display -->
+                                            <p class="card-text">
+                                                <strong>Location:</strong>
+                                                <%= listing.location ? listing.location : "Location not available" %>,
+                                                    <%= listing.country ? listing.country : "" %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <% } %>
+                        </div>
+    </body>
